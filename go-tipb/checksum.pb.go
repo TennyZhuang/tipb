@@ -18,6 +18,12 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type ChecksumScanOn int32
 
 const (
@@ -50,7 +56,9 @@ func (x *ChecksumScanOn) UnmarshalJSON(data []byte) error {
 	*x = ChecksumScanOn(value)
 	return nil
 }
-func (ChecksumScanOn) EnumDescriptor() ([]byte, []int) { return fileDescriptorChecksum, []int{0} }
+func (ChecksumScanOn) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_checksum_f010ef259e027128, []int{0}
+}
 
 type ChecksumAlgorithm int32
 
@@ -81,19 +89,51 @@ func (x *ChecksumAlgorithm) UnmarshalJSON(data []byte) error {
 	*x = ChecksumAlgorithm(value)
 	return nil
 }
-func (ChecksumAlgorithm) EnumDescriptor() ([]byte, []int) { return fileDescriptorChecksum, []int{1} }
-
-type ChecksumRequest struct {
-	StartTs          uint64            `protobuf:"varint,1,opt,name=start_ts,json=startTs" json:"start_ts"`
-	ScanOn           ChecksumScanOn    `protobuf:"varint,2,opt,name=scan_on,json=scanOn,enum=tipb.ChecksumScanOn" json:"scan_on"`
-	Algorithm        ChecksumAlgorithm `protobuf:"varint,3,opt,name=algorithm,enum=tipb.ChecksumAlgorithm" json:"algorithm"`
-	XXX_unrecognized []byte            `json:"-"`
+func (ChecksumAlgorithm) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_checksum_f010ef259e027128, []int{1}
 }
 
-func (m *ChecksumRequest) Reset()                    { *m = ChecksumRequest{} }
-func (m *ChecksumRequest) String() string            { return proto.CompactTextString(m) }
-func (*ChecksumRequest) ProtoMessage()               {}
-func (*ChecksumRequest) Descriptor() ([]byte, []int) { return fileDescriptorChecksum, []int{0} }
+type ChecksumRequest struct {
+	StartTs              uint64            `protobuf:"varint,1,opt,name=start_ts,json=startTs" json:"start_ts"`
+	ScanOn               ChecksumScanOn    `protobuf:"varint,2,opt,name=scan_on,json=scanOn,enum=tipb.ChecksumScanOn" json:"scan_on"`
+	Algorithm            ChecksumAlgorithm `protobuf:"varint,3,opt,name=algorithm,enum=tipb.ChecksumAlgorithm" json:"algorithm"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *ChecksumRequest) Reset()         { *m = ChecksumRequest{} }
+func (m *ChecksumRequest) String() string { return proto.CompactTextString(m) }
+func (*ChecksumRequest) ProtoMessage()    {}
+func (*ChecksumRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_checksum_f010ef259e027128, []int{0}
+}
+func (m *ChecksumRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ChecksumRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ChecksumRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ChecksumRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ChecksumRequest.Merge(dst, src)
+}
+func (m *ChecksumRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *ChecksumRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ChecksumRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ChecksumRequest proto.InternalMessageInfo
 
 func (m *ChecksumRequest) GetStartTs() uint64 {
 	if m != nil {
@@ -117,16 +157,46 @@ func (m *ChecksumRequest) GetAlgorithm() ChecksumAlgorithm {
 }
 
 type ChecksumResponse struct {
-	Checksum         uint64 `protobuf:"varint,1,opt,name=checksum" json:"checksum"`
-	TotalKvs         uint64 `protobuf:"varint,2,opt,name=total_kvs,json=totalKvs" json:"total_kvs"`
-	TotalBytes       uint64 `protobuf:"varint,3,opt,name=total_bytes,json=totalBytes" json:"total_bytes"`
-	XXX_unrecognized []byte `json:"-"`
+	Checksum             uint64   `protobuf:"varint,1,opt,name=checksum" json:"checksum"`
+	TotalKvs             uint64   `protobuf:"varint,2,opt,name=total_kvs,json=totalKvs" json:"total_kvs"`
+	TotalBytes           uint64   `protobuf:"varint,3,opt,name=total_bytes,json=totalBytes" json:"total_bytes"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *ChecksumResponse) Reset()                    { *m = ChecksumResponse{} }
-func (m *ChecksumResponse) String() string            { return proto.CompactTextString(m) }
-func (*ChecksumResponse) ProtoMessage()               {}
-func (*ChecksumResponse) Descriptor() ([]byte, []int) { return fileDescriptorChecksum, []int{1} }
+func (m *ChecksumResponse) Reset()         { *m = ChecksumResponse{} }
+func (m *ChecksumResponse) String() string { return proto.CompactTextString(m) }
+func (*ChecksumResponse) ProtoMessage()    {}
+func (*ChecksumResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_checksum_f010ef259e027128, []int{1}
+}
+func (m *ChecksumResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ChecksumResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ChecksumResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalTo(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (dst *ChecksumResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ChecksumResponse.Merge(dst, src)
+}
+func (m *ChecksumResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *ChecksumResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ChecksumResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ChecksumResponse proto.InternalMessageInfo
 
 func (m *ChecksumResponse) GetChecksum() uint64 {
 	if m != nil {
@@ -225,6 +295,9 @@ func encodeVarintChecksum(dAtA []byte, offset int, v uint64) int {
 	return offset + 1
 }
 func (m *ChecksumRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
 	var l int
 	_ = l
 	n += 1 + sovChecksum(uint64(m.StartTs))
@@ -237,6 +310,9 @@ func (m *ChecksumRequest) Size() (n int) {
 }
 
 func (m *ChecksumResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
 	var l int
 	_ = l
 	n += 1 + sovChecksum(uint64(m.Checksum))
@@ -582,9 +658,9 @@ var (
 	ErrIntOverflowChecksum   = fmt.Errorf("proto: integer overflow")
 )
 
-func init() { proto.RegisterFile("checksum.proto", fileDescriptorChecksum) }
+func init() { proto.RegisterFile("checksum.proto", fileDescriptor_checksum_f010ef259e027128) }
 
-var fileDescriptorChecksum = []byte{
+var fileDescriptor_checksum_f010ef259e027128 = []byte{
 	// 321 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x64, 0x90, 0x41, 0x4e, 0xc2, 0x40,
 	0x14, 0x86, 0x3b, 0x8a, 0x42, 0x9f, 0x11, 0xeb, 0x04, 0x23, 0x71, 0x51, 0x90, 0x44, 0x83, 0x2c,
