@@ -352,6 +352,7 @@ enum ScalarFuncSig {
 	SHA2 = 4508;
 	Uncompress = 4509;
 	UncompressedLength = 4510;
+	EvalLua = 4512;
 
 	/*info*/
 	Database = 4521;
